@@ -20,7 +20,7 @@ public class Buffer {
                 e.printStackTrace();
             }
         }
-        data [begin] = o;
+        data[begin] = o;
         begin = next(begin);
         notifyAll();
     }

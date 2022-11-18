@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="036490aa-c18d-44c1-8a98-a294779e578b" name="Changes" comment="" />
+    <list default="true" id="036490aa-c18d-44c1-8a98-a294779e578b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Buffer/Tuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ThreadPool/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Buffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Buffer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Consumidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Consumidor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Productor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Buffer/Productor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Main$1PoolStopper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Main$1PoolStopper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Main$1UserPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Main$1UserPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/DummyTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/PoisonException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/PoisonException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/PoisonPill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/PoisonPill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/ProductorThreadPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/ProductorThreadPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/ThreadPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/ThreadPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_Concurrente/ThreadPool/ThreadWorker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Buffer/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Buffer/Buffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadPool/DummyTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadPool/PoisonPill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadPool/PoisonPill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadPool/ProductorThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadPool/ProductorThreadPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadPool/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadPool/ThreadPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadPool/ThreadWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadPool/FilterWorker.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,17 +53,23 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/Administrator/Desktop/Facu/TP_Concurrente",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Buffer" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\Facu\TP_Concurrente" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\tp concurrente\TP_Concurrente\src" />
       <recent name="C:\Users\Administrator\Desktop\Facu\TP_Concurrente\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -61,8 +98,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668576549395</updated>
+      <workItem from="1668577453227" duration="12000" />
+      <workItem from="1668577473059" duration="297000" />
+      <workItem from="1668637381209" duration="9564000" />
+      <workItem from="1668711220436" duration="27543000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

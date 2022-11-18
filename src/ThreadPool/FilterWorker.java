@@ -1,22 +1,26 @@
 package ThreadPool;
 
-import Buffer.Buffer;
+import Buffer.*;
 
-public class ThreadWorker extends Thread{
+import java.awt.image.WritableRaster;
+
+public class FilterWorker extends Thread{
 
     private Buffer buffer;
 
     private ThreadPool pool;
 
 
-    public ThreadWorker(Buffer buffer, ThreadPool threadPool){
+    public FilterWorker(Buffer buffer, ThreadPool threadPool){
         this.buffer = buffer;
         this.pool = threadPool;
     }
 
+
+    @Override
     public void run(){
         while (true){
-            Runnable task = (Runnable) this.buffer.read();
+            Runnable task = this.buffer.read();
             task.run();
             this.pool.disminuirTareas();
         }

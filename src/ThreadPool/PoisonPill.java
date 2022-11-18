@@ -8,7 +8,7 @@ public class PoisonPill implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("Corto");
+            System.out.println("Muere thread");
             throw new PoisonException();
         } catch (PoisonException e) {
             throw new RuntimeException(e);

@@ -2,6 +2,7 @@ package ThreadPool;
 
 import Buffer.Buffer;
 
+import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,28 +12,46 @@ public class ThreadPool {
 
     private Buffer buffer;
 
+    private WritableRaster origen;
 
-    private List<ThreadWorker> workerList = new ArrayList<ThreadWorker>();
+    public static WritableRaster destino;
 
-    public ThreadPool(Integer capacidad, Integer workers, Integer tasks){
+    private double[][]filtro;
+
+
+    private List<FilterWorker> workerList = new ArrayList<FilterWorker>();
+
+    public ThreadPool(Integer capacidad, Integer workers, WritableRaster origen, WritableRaster destino, double[][]filtro){
         this.buffer = new Buffer(capacidad);
-        this.tasks = tasks;
+        this.origen = origen;
+        this.destino = destino;
+        this.tasks = (origen.getHeight()-2)*(origen.getWidth()-2);
+        this.filtro = filtro;
         for(int i = 0; i<workers; i++){
-            ThreadWorker worker = new ThreadWorker(this.buffer, this);
+            FilterWorker worker = new FilterWorker(this.buffer, this);
             workerList.add(worker);
             worker.start();
         }
     }
 
+
+    public WritableRaster getDestino() {
+        return destino;
+    }
+
     public synchronized void disminuirTareas(){
         this.tasks--;
         notify();
-        System.out.println("cantidad de tareas: " + this.tasks);
+        //System.out.println("cantidad de tareas: " + this.tasks);
     }
 
     public synchronized void launch(){
-        ProductorThreadPool productor = new ProductorThreadPool(this, this.buffer, this.tasks);
+        ProductorThreadPool productor = new ProductorThreadPool(this, this.buffer, this.filtro, this.origen, this.destino);
         productor.start();
+    }
+
+    public double[][] getMatriz() {
+        return this.filtro;
     }
 
     public synchronized void stop() throws InterruptedException {
