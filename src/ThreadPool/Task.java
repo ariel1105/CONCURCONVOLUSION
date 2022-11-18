@@ -1,5 +1,6 @@
 package ThreadPool;
 
+
 import java.awt.image.WritableRaster;
 
 import static ThreadPool.ThreadPool.destino;
@@ -18,6 +19,7 @@ public class Task implements Runnable{
         this.y = y;
         this.origen = origen;
         this.matriz = matriz;
+
     }
 
 
@@ -82,6 +84,6 @@ public class Task implements Runnable{
         if (azul > 255){azul = 255;}
         if (azul < 0){azul = 0;}
         destino.setSample(x,y,2,azul);
-        System.out.println("Consume: " + x + ", " + y);
+
     }
 }

@@ -125,13 +125,31 @@ public class Main {
         //double[][] matriz = {{1/9d,1/9d,1/9d},{1/9d,1/9d,1/9d},{1/9d,1/9d,1/9d}};
 
         //k-sharpen
-        double[][] matriz = {{0,-1,0},{-1,5,-1},{0,-1,0}};
+        //double[][] matriz = {{0,-1,0},{-1,5,-1},{0,-1,0}};
 
         //sobel horizontal
-        //double[][] matriz = {{1d,0,-1d},{2d,0,-2d},{1d,0,-1d}};
+        double[][] matriz = {{1d,0,-1d},{2d,0,-2d},{1d,0,-1d}};
+
 
         //sobel vertical
         //double[][] matriz = {{1d,2d,1d},{0,0,0},{-1d,-2d,-1d}};
+
+
+        File image = new File("C:\\Users\\Administrator\\Desktop\\Facu\\TP_Concurrente\\src\\prueba.jpg");
+        BufferedImage bi = ImageIO.read(image);
+        WritableRaster origen = bi.getRaster();
+
+        int ancho = origen.getWidth();
+        int alto = origen.getHeight();
+        int canales = origen.getNumBands();
+
+
+        WritableRaster destino = origen.createCompatibleWritableRaster(ancho, alto);
+        destino.setPixels(0,0, ancho, alto, new double[ancho*alto*canales]);
+
+        BufferedImage bi_salida = new BufferedImage(bi.getColorModel(), destino,bi.isAlphaPremultiplied(),null);
+        File outputFile = new File("salida.jpg");
+
 
         class UserPool extends Thread {
 
@@ -155,24 +173,24 @@ public class Main {
             public void run() {
                 try {
                     pool.stop();
-                } catch (InterruptedException e) {
+                    ImageIO.write(bi_salida, "jpg", outputFile);
+                    long tiempoFinal = System.currentTimeMillis();
+                    System.out.println(tiempoFinal);
+
+                } catch (InterruptedException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
 
-        File image = new File("C:\\Users\\Usuario\\Desktop\\tp concurrente\\TP_Concurrente\\src\\prueba.jpg");
-        BufferedImage bi = ImageIO.read(image);
-        WritableRaster origen = bi.getRaster();
 
-        int ancho = origen.getWidth();
-        int alto = origen.getHeight();
-        int canales = origen.getNumBands();
+        long contadorInicial = System.currentTimeMillis();
 
-        WritableRaster destino = origen.createCompatibleWritableRaster(ancho, alto);
-        destino.setPixels(0,0, ancho, alto, new double[ancho*alto*canales]);
+        ThreadPool pool = new ThreadPool(64,16, origen, destino, matriz);
 
-        ThreadPool pool = new ThreadPool(8,8, origen, destino, matriz);
+
+
+
 
         UserPool user = new UserPool(pool);
         PoolStopper stopper = new PoolStopper(pool);
@@ -180,8 +198,6 @@ public class Main {
         user.start();
         stopper.start();
 
-        BufferedImage bi_salida = new BufferedImage(bi.getColorModel(), pool.destino,bi.isAlphaPremultiplied(),null);
-        File outputFile = new File("salida.jpg");
-        ImageIO.write(bi_salida, "jpg", outputFile);
+
     }
 }

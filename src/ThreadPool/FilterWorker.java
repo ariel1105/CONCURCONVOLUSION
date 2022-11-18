@@ -2,7 +2,6 @@ package ThreadPool;
 
 import Buffer.*;
 
-import java.awt.image.WritableRaster;
 
 public class FilterWorker extends Thread{
 

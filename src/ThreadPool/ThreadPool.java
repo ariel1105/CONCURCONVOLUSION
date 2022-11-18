@@ -32,6 +32,7 @@ public class ThreadPool {
             workerList.add(worker);
             worker.start();
         }
+
     }
 
 
@@ -46,7 +47,7 @@ public class ThreadPool {
     }
 
     public synchronized void launch(){
-        ProductorThreadPool productor = new ProductorThreadPool(this, this.buffer, this.filtro, this.origen, this.destino);
+        ProductorThreadPool productor = new ProductorThreadPool(this.buffer, this.filtro, this.origen);
         productor.start();
     }
 

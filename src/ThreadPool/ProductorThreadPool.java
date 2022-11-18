@@ -12,7 +12,6 @@ public class ProductorThreadPool extends Thread{
 
     private WritableRaster origen;
 
-
     public ProductorThreadPool(Buffer buffer, double[][] filtro, WritableRaster origen){
         this.buffer = buffer;
         this.filtro = filtro;
@@ -25,7 +24,6 @@ public class ProductorThreadPool extends Thread{
             for(int x = 1; x < origen.getWidth() - 1; x++){
                 Task task = new Task(x,y,origen, filtro);
                 this.buffer.write(task);
-                System.out.println("produce: "+ x + ", " + y);
             }
         }
 
