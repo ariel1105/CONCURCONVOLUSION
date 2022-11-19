@@ -21,7 +21,7 @@ public class FilterWorker extends Thread{
         while (true){
             Runnable task = this.buffer.read();
             task.run();
-            this.pool.disminuirTareas();
         }
+
     }
 }

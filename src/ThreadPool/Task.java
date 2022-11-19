@@ -3,10 +3,10 @@ package ThreadPool;
 
 import java.awt.image.WritableRaster;
 
-import static ThreadPool.ThreadPool.destino;
 
 public class Task implements Runnable{
 
+    private  WritableRaster destino;
     int x;
     int y;
 
@@ -14,11 +14,12 @@ public class Task implements Runnable{
 
     private double[][] matriz;
 
-    public Task(int x, int y, WritableRaster origen, double[][] matriz) {
+    public Task(int x, int y, WritableRaster origen, WritableRaster destino, double[][] matriz) {
         this.x = x;
         this.y = y;
         this.origen = origen;
         this.matriz = matriz;
+        this.destino = destino;
 
     }
 
@@ -44,7 +45,7 @@ public class Task implements Runnable{
 
         if (rojo > 255){rojo = 255;}
         if (rojo < 0){rojo = 0;}
-        destino.setSample(x,y,0, rojo);
+        this.destino.setSample(x,y,0, rojo);
 
         //genero  verde
 
@@ -64,7 +65,7 @@ public class Task implements Runnable{
 
         if (verde > 255){verde = 255;}
         if (verde < 0){verde = 0;}
-        destino.setSample(x,y,1, verde);
+        this.destino.setSample(x,y,1, verde);
         //genero azul
 
 
@@ -83,7 +84,7 @@ public class Task implements Runnable{
                     + a31Azul * matriz[2][0] + a32Azul * matriz[2][1] + a33Azul * matriz[2][2];
         if (azul > 255){azul = 255;}
         if (azul < 0){azul = 0;}
-        destino.setSample(x,y,2,azul);
+        this.destino.setSample(x,y,2,azul);
 
     }
 }
