@@ -35,24 +35,14 @@ public class ThreadPool {
 
     }
 
-
-    public WritableRaster getDestino() {
-        return destino;
-    }
-
     public synchronized void disminuirTareas(){
         this.tasks--;
         notify();
-        //System.out.println("cantidad de tareas: " + this.tasks);
     }
 
     public synchronized void launch(){
         ProductorThreadPool productor = new ProductorThreadPool(this.buffer, this.filtro, this.origen);
         productor.start();
-    }
-
-    public double[][] getMatriz() {
-        return this.filtro;
     }
 
     public synchronized void stop() throws InterruptedException {

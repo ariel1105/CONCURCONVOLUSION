@@ -1,138 +1,47 @@
 import ThreadPool.ThreadPool;
+import ThreadPool.Filtro;
+import ThreadPool.UserPool;
+import ThreadPool.PoolStopper;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String [] args) throws IOException {
-        /*class UserPool extends Thread {
 
-            ThreadPool pool;
+        System.out.println ("Empezamos el programa");
 
-            public UserPool(ThreadPool pool) {
-                this.pool = pool;
-            }
+        System.out.println ("Por favor introduzca el tamaño del Buffer:");
 
-            public void run() {
-                pool.launch();
-            }
-        }
-        class PoolStopper extends Thread {
-            ThreadPool pool;
+        String tamañoBuffer = "";
 
-            public PoolStopper(ThreadPool pool) {
-                this.pool = pool;
-            }
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
 
-            public void run() {
-                try {
-                    pool.stop();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+        tamañoBuffer = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
 
-        ThreadPool pool = new ThreadPool(5, 4, 100);
-        UserPool user = new UserPool(pool);
-        PoolStopper stopper = new PoolStopper(pool);
-        user.start();
-        stopper.start();
-    }*/
+        System.out.println ("El Tamaño del Buffer es: \"" + tamañoBuffer +"\"");
 
-/*
-        int[][] matriz = {{1,2,3},{4,5,6},{7,8,9}};
-        matriz[0][0] = 1; matriz[0][1] = 2; matriz[0][2] = 3;
-        matriz[1][0] = 4; matriz[1][1] = 5; matriz[1][2] = 6;
-        matriz[2][0] = 7; matriz[2][1] = 8; matriz[2][2] = 9;
-*/
+        System.out.println ("Por favor introduzca la cantidad de Threads a iniciar:");
 
+        String cantidadThreads = "";
 
-        /*for(int y = 1; y < alto-1; y++){
-            for(int x = 1; x < ancho-1; x++){
-                //generando rojo
+        cantidadThreads = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
 
-                double a11Rojo = raster.getSample(x-1,y+1,0);
-                double a12Rojo = raster.getSample(x-1,y,0);
-                double a13Rojo = raster.getSample(x-1,y-1,0);
-                double a21Rojo = raster.getSample(x,y+1,0);
-                double a22Rojo = raster.getSample(x,y,0);
-                double a23Rojo = raster.getSample(x,y-1,0);
-                double a31Rojo = raster.getSample(x+1,y+1,0);
-                double a32Rojo = raster.getSample(x+1,y,0);
-                double a33Rojo = raster.getSample(x+1,y-1,0);
+        System.out.println ("La cantidad de Threads es: \"" + cantidadThreads +"\"");
 
-                double rojo = a11Rojo * matriz[0][0] + a12Rojo * matriz[0][1] + a13Rojo * matriz[0][2]
-                            + a21Rojo * matriz[1][0] + a22Rojo * matriz[1][1] + a23Rojo * matriz[1][2]
-                            + a31Rojo * matriz[2][0] + a32Rojo * matriz[2][1] + a33Rojo * matriz[2][2];
+        System.out.println ("Por favor introduzca el filtro que desea aplicar:");
 
-                if(x==1 && y==1){
-                    System.out.println(rojo);
-                }
-                if (rojo > 255){rojo = 255;}
-                if (rojo < 0){rojo = 0;}
-                destino.setSample(x,y,0, rojo);
+        String filtro = "";
 
-                //genero  verde
+        filtro = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
 
-                double a11Verde = raster.getSample(x-1,y+1,1);
-                double a12Verde = raster.getSample(x-1,y,1);
-                double a13Verde = raster.getSample(x-1,y-1,1);
-                double a21Verde = raster.getSample(x,y+1,1);
-                double a22Verde = raster.getSample(x,y,1);
-                double a23Verde = raster.getSample(x,y-1,1);
-                double a31Verde = raster.getSample(x+1,y+1,1);
-                double a32Verde = raster.getSample(x+1,y,1);
-                double a33Verde = raster.getSample(x+1,y-1,1);
-
-                double verde = a11Verde * matriz[0][0] + a12Verde * matriz[0][1] + a13Verde * matriz[0][2]
-                             + a21Verde * matriz[1][0] + a22Verde * matriz[1][1] + a23Verde * matriz[1][2]
-                             + a31Verde * matriz[2][0] + a32Verde * matriz[2][1] + a33Verde * matriz[2][2];
-
-                if (verde > 255){verde = 255;}
-                if (verde < 0){verde = 0;}
-                destino.setSample(x,y,1, verde);
-                //genero azul
-
-
-                double a11Azul = raster.getSample(x-1,y+1,2);
-                double a12Azul = raster.getSample(x-1,y,2);
-                double a13Azul = raster.getSample(x-1,y-1,2);
-                double a21Azul = raster.getSample(x,y+1,2);
-                double a22Azul = raster.getSample(x,y,2);
-                double a23Azul = raster.getSample(x,y-1,2);
-                double a31Azul = raster.getSample(x+1,y+1,2);
-                double a32Azul = raster.getSample(x+1,y,2);
-                double a33Azul = raster.getSample(x+1,y-1,2);
-
-                double azul = a11Azul * matriz[0][0] + a12Azul * matriz[0][1] + a13Azul * matriz[0][2]
-                            + a21Azul * matriz[1][0] + a22Azul * matriz[1][1] + a23Azul * matriz[1][2]
-                            + a31Azul * matriz[2][0] + a32Azul * matriz[2][1] + a33Azul * matriz[2][2];
-                if (azul > 255){azul = 255;}
-                if (azul < 0){azul = 0;}
-                destino.setSample(x,y,2,azul);
-            }
-        }
-
-
-*/
-        //blur
-        //double[][] matriz = {{1/9d,1/9d,1/9d},{1/9d,1/9d,1/9d},{1/9d,1/9d,1/9d}};
-
-        //k-sharpen
-        //double[][] matriz = {{0,-1,0},{-1,5,-1},{0,-1,0}};
-
-        //sobel horizontal
-        double[][] matriz = {{1d,0,-1d},{2d,0,-2d},{1d,0,-1d}};
-
-
-        //sobel vertical
-        //double[][] matriz = {{1d,2d,1d},{0,0,0},{-1d,-2d,-1d}};
+        System.out.println ("El filtro seleccionado es: \"" + filtro +"\"");
 
 
         File image = new File("C:\\Users\\Administrator\\Desktop\\Facu\\TP_Concurrente\\src\\prueba.jpg");
@@ -150,50 +59,9 @@ public class Main {
         BufferedImage bi_salida = new BufferedImage(bi.getColorModel(), destino,bi.isAlphaPremultiplied(),null);
         File outputFile = new File("salida.jpg");
 
-
-        class UserPool extends Thread {
-
-            ThreadPool pool;
-
-            public UserPool(ThreadPool pool) {
-                this.pool = pool;
-            }
-
-            public void run() {
-                pool.launch();
-            }
-        }
-        class PoolStopper extends Thread {
-            ThreadPool pool;
-
-            public PoolStopper(ThreadPool pool) {
-                this.pool = pool;
-            }
-
-            public void run() {
-                try {
-                    pool.stop();
-                    ImageIO.write(bi_salida, "jpg", outputFile);
-                    long tiempoFinal = System.currentTimeMillis();
-                    System.out.println(tiempoFinal);
-
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-
-
-        long contadorInicial = System.currentTimeMillis();
-
-        ThreadPool pool = new ThreadPool(64,16, origen, destino, matriz);
-
-
-
-
-
+        ThreadPool pool = new ThreadPool(Integer.parseInt(tamañoBuffer),Integer.parseInt(cantidadThreads), origen, destino, Filtro.getByName(filtro));
         UserPool user = new UserPool(pool);
-        PoolStopper stopper = new PoolStopper(pool);
+        PoolStopper stopper = new PoolStopper(pool , bi_salida , outputFile);
 
         user.start();
         stopper.start();
