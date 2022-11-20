@@ -28,13 +28,13 @@ public class Main {
 
         System.out.println ("El Tamaño del Buffer es: \"" + tamañoBuffer +"\"");
 
-        System.out.println ("Por favor introduzca la cantidad de Threads a iniciar:");
+        System.out.println ("Por favor introduzca la cantidad de Workers a iniciar:");
 
-        String cantidadThreads = "";
+        String cantidadWorkers = "";
 
-        cantidadThreads = entradaEscaner.nextLine();
+        cantidadWorkers = entradaEscaner.nextLine();
 
-        System.out.println ("La cantidad de Threads es: \"" + cantidadThreads +"\"");
+        System.out.println ("La cantidad de Workers es: \"" + cantidadWorkers +"\"");
 
         System.out.println ("Por favor introduzca la ruta absoluta de la imagen transformar:");
 
@@ -69,7 +69,7 @@ public class Main {
         File outputFile = new File("salida.jpg");
 
 
-        ThreadPool pool = new ThreadPool(Integer.parseInt(tamañoBuffer),Integer.parseInt(cantidadThreads), origen, destino, Filtro.getByName(filtro));
+        ThreadPool pool = new ThreadPool(Integer.parseInt(tamañoBuffer),Integer.parseInt(cantidadWorkers), origen, destino, Filtro.getByName(filtro));
         UserPool user = new UserPool(pool);
         WorkerCounter workerCounter = new WorkerCounter(pool);
         PoolStopper stopper = new PoolStopper(workerCounter , bi_salida , outputFile);
