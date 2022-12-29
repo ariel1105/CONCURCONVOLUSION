@@ -8,7 +8,7 @@ cantidad de Threads a iniciar, la ruta en la que se encuentra la imagen que
 quiere procesar y el filtro que quiere aplicar, y al finalizar devuelve en una
 imagen de nombre “salida.jpg” el resultado.
 
-##Explicación de las clases creadas en el programa:
+## Explicación de las clases creadas en el programa:
 
 ● El Buffer, es un recurso compartido entre los threads generados y lo
 creamos como un monitor. De esta forma, nos aseguramos el mutex
@@ -62,7 +62,7 @@ poseen un nombre y la matriz para aplicarlo, permitiendo así
 fácilmente meter nuevos simplemente agregando un nuevo valor en el
 código fuente.
 
-##CÓMO EJECUTAR EL PROGRAMA:
+## CÓMO EJECUTAR EL PROGRAMA:
 Para ejecutar por CLI:
 
 1. Tener instalado JDK-19, ubicarte en la carpeta src desde la consola y
@@ -81,7 +81,7 @@ vertical”, “sobel horizontal” , “laplacian” y “emboss”. Presionar 
 6. Esperar a que finalice la ejecución y revisar el archivo salida.jpg
 ubicado en la misma carpeta src.
 
-##Para ejecutar por intelliJ:
+## Para ejecutar por intelliJ:
 
 1. Configurar la SDK del proyecto con openjdk-19 de Oracle
 2. Correr el Main.
